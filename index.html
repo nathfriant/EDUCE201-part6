@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/serif.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Analyse des systèmes éducatifs
+
+#### Le rôle du système dans les inégalités
+##### Partie 1 - Inégalités de genre
+<small>
+
+Nathanaël Friant
+
+2024-2025</small>
+
+<aside class="notes"><p>Pour cette partie du cours, nous allons nous intéresser au paradoxe de la réussite scolaire des filles et comment le système éducatif contribue aux inégalités de genre, un sujet d&#39;actualité avec la journée internationale des droits des femmes du 8 mars.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Le paradoxe de la réussite scolaire des filles
+
+<div style="text-align: center; font-size: 26px; font-style: italic; margin: 50px;">
+"Comment expliquer que malgré leur meilleure réussite scolaire, <br>les filles connaissent des trajectoires professionnelles moins favorables<br> et des inégalités persistantes sur le marché du travail ?"
+</div>
+
+<aside class="notes"><p>Voici la question centrale qui va nous occuper pour cette partie. La situation est paradoxale: alors que les filles réussissent mieux à l&#39;école, elles se retrouvent ensuite désavantagées dans leur parcours professionnel.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### État des lieux : la réussite des filles
+
+
+<li>Meilleures notes moyennes à tous les niveaux</li>
+<li>Moins de redoublement</li>
+<li>Meilleur taux de diplomation</li>
+<li>Avance en lecture et en écriture</li>
+<li>Écart en mathématiques réduit ou inversé dans certains pays</li>
+
+
+<aside class="notes"><p>Les statistiques montrent clairement que les filles réussissent mieux dans le système scolaire selon presque tous les indicateurs. Elles ont de meilleures notes, redoublent moins, et obtiennent plus souvent des diplômes. L&#39;écart en faveur des filles est particulièrement marqué en lecture et en langue.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Et pourtant... des trajectoires moins favorables
+
+
+- **Sciences et technologies** : Sous-représentation persistante des filles dans les filières STEM
+- **Métiers du care** : Sur-représentation dans les filières liées aux soins, à l'éducation, au social
+- **Enseignement supérieur** : Fortes disparités selon les disciplines (ex: informatique vs psychologie)
+- **Conséquences** : Impact sur les salaires futurs et les perspectives de carrière
+
+<aside class="notes"><p>Une partie de l&#39;explication réside dans la ségrégation horizontale des parcours: les filles et les garçons s&#39;orientent vers des filières différentes. Les filles sont sous-représentées dans les filières STEM (sciences, technologie, ingénierie, mathématiques) qui mènent souvent à des carrières mieux rémunérées.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Pour faire le constat - les sources de données
+
+
+- Publications relatives au système éducatif: 
+	- Les indicateurs de l'enseignement
+	- Publications du CREF (enseignement supérieur)
+	- Open data de l'ARES
+- Enquêtes internationales: PISA
+- Données longitudinales:
+	- France: panels d'élèves
+	- UK: Millenium Cohort Study
+
+<aside class="notes"><p>De nombreux pays ont mis en place des bases de données nationales qui permettent de suivre les parcours éducatifs des élèves. Ces données sont précieuses pour comprendre les spécificités des inégalités de genre dans chaque contexte national.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Indicateurs de l'enseignement
+
+<img src="Capture d’écran 2025-03-10 à 14.45.51.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### CREF
+
+http://www.cref.be/annuaires/2022/ 
+
+<img src="Capture d’écran 2025-03-10 à 14.50.43.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Open data de l'ARES
+
+https://ares-digitalwallonia.opendatasoft.com/pages/home/ 
+
+<img src="Capture d’écran 2025-03-10 à 14.58.27.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### PISA
+
+Mise en relation de trois séries de données:
+- Compétences des élèves
+- Caractéristiques personnelles des élèves
+- Attitudes vis-à-vis de l’école et des apprentissages.
+- Dans les pays où la statistique scolaire n’est pas très développée, l’enquête PISA est la meilleure, voire la seule, source pour rendre compte du fonctionnement de l’école.
+
+https://www.pisa-fwb.uliege.be/cms/c_7337635/fr/pisa-fwb?id=c_7337635
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### France: panels d'élèves
+
+<img src="Capture d’écran 2025-03-10 à 15.05.37.png" alt="" style="object-fit: scale-down">
+
+
+
+<aside class="notes"><p>Les études transversales comme PISA donnent un instantané, mais les études longitudinales qui suivent les mêmes individus sur plusieurs années permettent de mieux comprendre les parcours différenciés et les moments clés où les écarts se creusent.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### UK: Millennium cohort study
+<img src="Capture d’écran 2025-03-10 à 15.07.36.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Pourquoi monitorer les parcours différenciés ?
+
+<li>Rendre visible ce qui reste souvent invisible</li> <li>Mesurer l'ampleur réelle des phénomènes</li> <li>Suivre l'évolution dans le temps</li> <li>Évaluer l'impact des politiques éducatives</li> <li>Comparer entre systèmes éducatifs</li>
+
+<aside class="notes"><p>Sans données précises, les inégalités de genre restent souvent invisibles ou sont minimisées. La collecte systématique de données permet non seulement de mettre en lumière ces inégalités, mais aussi de mesurer leur évolution et l&#39;efficacité des interventions.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Au-delà du constat : les mécanismes systémiques
+
+<div style="text-align: center; font-size: 24px; margin: 30px;">
+<p>Quels <span style="color: #00608d; font-weight: bold;">facteurs structurels</span> produisent cette <span style="color: #b30000; font-weight: bold;">orientation genrée</span> ?</p>
+</div>
+
+<aside class="notes"><p>Maintenant, nous allons essayer de comprendre les mécanismes qui conduisent à cette situation paradoxale. Et ce faisant, on ne va pas tellement se centrer sur des choix et des préférences individuels, mais plutôt sur des facteurs systémiques qui orientent ces choix, préférences, parcours. Le système éducatif joue un rôle dans les parcours différenciés.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La menace du stéréotype
+
+
+- **Définition** : Pression ressentie quand on risque de confirmer un stéréotype négatif associé à son groupe
+- **Exemple classique** : Performance des filles en mathématiques lorsque leur identité de genre est activée
+- **Mécanisme** : Mobilisation d'une partie des ressources cognitives par l'anxiété, réduisant les performances
+- **Travaux de référence** : Spencer, Steele et Quinn (1999); Régner et al. (2014)
+
+<aside class="notes"><p>La menace du stéréotype est un mécanisme bien documenté. Lorsque les filles sont rappelées (même subtilement) au stéréotype selon lequel elles seraient moins douées en mathématiques, leurs performances diminuent. Ce phénomène a été répliqué dans de nombreuses études et contribue à l&#39;orientation genrée.</p>
+<p>Remarque: le consensus scientifique actuel considère la menace du stéréotype comme un phénomène bien réel mais dont les contours et l&#39;ampleur sont plus nuancés que dans les premières publications.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Effet cumulatif des interactions différenciées en classe
+
+- **Micro-interactions** en classe renforçant les stéréotypes
+- **Feedback** différencié sur les performances (attribution à l'effort vs capacités)
+- **Confiance en soi** affectée dans certaines disciplines
+- **Cercle vicieux** : moins de pratique → moins de performance → confirmation du stéréotype
+
+<aside class="notes"><p>Les recherches montrent que, même inconsciemment, les enseignants interagissent différemment avec les élèves selon leur genre. Les garçons reçoivent plus d&#39;attention, sont plus souvent interrogés, et reçoivent des feedbacks différents. Ces micro-interactions quotidiennes ont un effet cumulatif important.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Le curriculum caché et l'invisibilité des femmes
+
+- **Définition** : Ensemble des normes et valeurs transmises implicitement à travers les pratiques scolaires
+- **Manifestations** : Organisation de l'espace, interactions, exemples utilisés, contenus des manuels
+- **Impact** : Renforcement des hiérarchies et des rôles genrés sans enseignement explicite
+
+<aside class="notes"><p>Le curriculum caché désigne tout ce qui est appris à l&#39;école sans être explicitement enseigné. Il transmet des normes de genre à travers la sous-représentation des femmes dans les manuels, les exemples utilisés, l&#39;organisation des disciplines, etc. Ces messages implicites façonnent les aspirations et les choix.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Le curriculum caché
+
+<div style="text-align: center; font-size: 24px; margin: 30px;">
+<p>Les messages implicites transmis par le système éducatif</p>
+</div>
+
+<div style="display: flex; justify-content: space-around; text-align: center;">
+<div>
+<h4>Représentations</h4>
+<p>Invisibilité des femmes dans les manuels</p>
+</div>
+<div>
+<h4>Attentes</h4>
+<p>Normes genrées implicites</p>
+</div>
+<div>
+<h4>Organisation</h4>
+<p>Hiérarchie implicite des disciplines</p>
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La place des femmes dans les savoirs scolaires
+
+- **Histoire** : Sous-représentation des figures féminines
+- **Littérature** : Canon littéraire majoritairement masculin
+- **Sciences** : Invisibilisation des contributions féminines
+- **Conséquence** : Message implicite sur la place "naturelle" des femmes dans différents champs
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Effet Matthieu
+
+<aside class="notes"><p>Comme nous l&#39;avons vu avec l&#39;effet Matthieu, de petites différences initiales s&#39;amplifient avec le temps. Les micro-interactions genrées, les messages implicites, et les attentes différenciées produisent des effets cumulatifs qui orientent progressivement les filles et les garçons vers des parcours distincts.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Simuler l'impact des interventions
+
+Que se passe-t-il si on modifie certains paramètres ?
+
+- **Réduction des biais** chez les enseignants (stéréotypes implicites)
+- **Programme d'exposition** à des modèles féminins dans les STEM
+- **Modification du curriculum** pour intégrer plus de figures féminines
+- **Politique de quotas** dans certaines filières
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Références bibliographiques 
+
+- Duru-Bellat, M. (2004). _L'école des filles : Quelle formation pour quels rôles sociaux ?_ L'Harmattan.
+    
+- Mosconi, N. (2017). _Genre et éducation des filles : Des clartés de tout_. L'Harmattan.
+    
+- Steele, C. M., & Aronson, J. (1995). Stereotype threat and the intellectual test performance of African Americans. _Journal of Personality and Social Psychology_, 69(5), 797–811.
+    
+- Régner, I., Smeding, A., Gimmig, D., Thinus-Blanc, C., Monteil, J. M., & Huguet, P. (2010). Individual differences in working memory moderate stereotype-threat effects. _Psychological Science_, 21(11), 1646-1648.
+    
+- Vouillot, F. (2007). L'orientation aux prises avec le genre. _Travail, genre et sociétés_, 18(2), 87-108.
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/menu/menu.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"showNotes":true,"transition":"slide","transitionSpeed":"fast"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
